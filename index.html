@@ -1,0 +1,353 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Telling Left from Right: Identifying Geometry-Aware Semantic Correspondence</title>
+  <link href="./files/style.css" rel="stylesheet">
+  <script type="text/javascript" src="./files/jquery.mlens-1.0.min.js"></script>
+  <script type="text/javascript" src="./files/jquery.js"></script>
+  <style>
+    .divider {
+      border-right: 2px dashed #737373;
+      width: 2px;
+    }
+  </style>
+  <style>
+    .divider_horizontal {
+      border-top: 2px dashed #737373;
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <div class="content">
+    <h1><strong>Telling Left from Right: Identifying Geometry-Aware<br>Semantic Correspondence</strong>
+    </h1>
+    <p id="authors">
+      <span>
+        <a href="https://junyi42.github.io/">Junyi Zhang<sup>1</sup></a>
+      </span>
+      <span>
+        <a href="https://scholar.google.com/citations?user=LQvi5XAAAAAJ">Charles Herrmann<sup>2</sup></a>
+      </span>
+      <span>
+        <a href="https://hurjunhwa.github.io/">Junhwa Hur<sup>2</sup></a>
+      </span>
+      <span>
+        <a href="https://ezrc2.github.io/">Eric Chen<sup>3</sup></a>
+      </span>
+      <br>
+      <span>
+        <a href="https://varunjampani.github.io/">Varun Jampani<sup>4</sup></a>
+      </span>
+      <span>
+        <a href="https://deqings.github.io/">Deqing Sun<sup>2</sup></a>
+      </span>
+      <span>
+        <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang<sup>2,5</sup></a>
+      </span>
+      <br>
+      <span class="institution"><a href="https://www.sjtu.edu.cn/"><sup>1</sup> Shanghai Jiao Tong University</a> 
+        <a href="https://research.google/"><sup>2</sup> Google Research</a>
+        <a href="https://illinois.edu/"><sup>3</sup> UIUC</a>
+        <a href="https://stability.ai/"><sup>4</sup> Stability AI</a> 
+        <a href="https://www.ucmerced.edu/"><sup>5</sup> UC Merced</a></span>
+          <!-- add publication NeurIPS 2023
+      <br><br>
+      <span class="conference">NeurIPS 2023</span> -->
+    </p>
+    
+    <br>
+    <div style="display: flex; justify-content: center;">
+      <div style="width: 47.5%; text-align: center; margin-right: 2.5%;">
+        <div style="height: 7.5px;"></div> 
+          <img src="./files/teaser_limitation.png" style="width: 100%;">
+        <div style="height: 17.5px;"></div> 
+          <div><strong>(a)</strong> SD+DINO [1] struggles at “telling left from right” (red solid lines).</div>
+      </div>
+      <div style="width: 50%; text-align: center;">
+          <img src="./files/teaser_performance.png" style="width: 100%;">
+          <div style="height: 7.5px;"></div> 
+          <div><strong>(b)</strong> Our method significantly improves semantic correspondence.</div>
+      </div>
+  </div>
+  <div style="height: 10px;"></div>
+  <div style="text-align: center;">
+      <img src="./files/teaser_quali_compare.png" class="teaser-gif" style="width:100%;">
+      <div style="height: 7.5px;"></div> 
+      <div><strong>(c)</strong> Qualitative comparison with state-of-the-art methods in cases with extreme viewpoint variations.</div>
+  </div>
+    <br>
+    <!-- <font size="+1">
+    <h3 style="text-align:center"><center>Semantic correspondence with fused Stable Diffusion and DINO features.</center></h3>
+    </font> -->
+    <a style="text-align:center">
+      <strong>In Fig. (a)</strong>, we demonstrate that the state-of-the-art method, SD+DINO, fails at matching keypoints with geometric ambiguity, or, “telling left from right”. 
+      <strong>In Fig. (b)</strong>, we show the performance gap between our proposed geometry-aware subset (Geo.) and the standard set (Std.) of state-of-the-art methods. 
+      Note that the geo-aware subset accounts for 59.6% and 45.7% of the total keypoint pairs on SPair-71k and AP-10K, respectively. 
+      Our method significantly improves overall semantic correspondence as well as narrows the gap between the two sets. 
+      <strong>In Fig. (c)</strong>, our method successfully establishes geometrically correct semantic correspondence even in cases of extreme view variation, while both versions of SD+DINO struggle with geometric ambiguity.
+    </a>
+    <font size="+2">
+      <p style="text-align: center;">
+        <!-- <a href="files/NIPS_23_Fusing_SD_DINO_cr.pdf" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="files/NIPS_23_Fusing_SD_DINO_cr_supp.pdf" target="_blank">[Supp.]</a>&nbsp;&nbsp;&nbsp;&nbsp; -->
+        <a href="https://arxiv.org/abs/2305.15347" target="_blank">[Arxiv (coming soon)]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://github.com/Junyi42/sd-dino" target="_blank">[Code (coming soon)]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="files/bibtex.txt" target="_blank">[BibTeX]</a>
+      </p>
+    </font>
+  </div>
+
+  <div class="content">
+    <h2 style="text-align:center;">Abstract</h2>
+    <p>While pre-trained large-scale vision models have shown significant promise for semantic correspondence, their features often struggle to grasp the geometry and orientation of instances. 
+      This paper identifies the importance of being geometry-aware for semantic correspondence and reveals a limitation of the features of current foundation models under simple post-processing. 
+      We show that incorporating this information can markedly enhance semantic correspondence performance with simple but effective solutions in both zero-shot and supervised settings. 
+      We also construct a new challenging benchmark for semantic correspondence built from an existing animal pose estimation dataset, for both pre-training validating models. Our method achieves a PCK@0.10 score of <strong>64.2</strong> (zero-shot) and <strong>85.6</strong> (supervised) on the challenging SPair-71k dataset, outperforming the state-of-the-art by 4.3p and 11.0p absolute gains, respectively. 
+      Our code and datasets will be publicly available.</p>
+  </div>
+
+
+  <div class="content">
+    <h2>Geometric Awareness of SD/DINO Features</h2>
+    <p> We show how these features perform at matching keypoints with geometric ambiguity by constructing a geometry-aware semantic correspondence subset. </p>
+    <div style="display: flex; justify-content: center;">
+      <div style="width: 45%; text-align: center; margin-right: 2%;">
+          <img src="./files/geo-aware-kptgroups.png" style="width: 100%;">
+        <div style="height: 7.5px;"></div> 
+          <div><strong>(a)</strong> Semantically-similar keypoint subgroups in images.</div>
+      </div>
+      <div style="width: 45%; text-align: center;">
+        <div style="height: 1.75px;"></div>
+          <img src="./files/geo-aware-annotation.png" style="width: 100%;">
+          <div style="height: 7.5px;"></div> 
+          <div><strong>(b)</strong> Annotations of geo-aware semantic correspondence (yellow).</div>
+      </div>
+    </div>
+    
+  <br>
+    <a>
+      To construct a geometry-aware semantic correspondence subset, we first cluster keypoints into semantically-similar subgroups, eg., the four paws and two ears of the cat, as shown in <strong>Fig. (a)</strong>.
+      Then, we define a keypoint pair as a geometry-aware semantic correspondence if there are other keypoints in the same subgroup that are visible in the target image, eg., the different paws of the cat, as shown in <strong>Fig. (b)</strong>.
+      These cases are especially challenging for existing methods, as they require proper understanding of the geometry to establish correct matches rather than matching to the semantically-similar keypoint(s).
+    </a>
+  <br>
+  <br>
+
+    <div style="display: flex; justify-content: center;">
+      <div style="width: 51.75%; text-align: center; margin-right: 2.5%;">
+          <img src="./files/geo-aware-performance.png" style="width: 100%;">
+        <div style="height: 8.5px;"></div> 
+          <div><strong>(c)</strong> Per-category performance on geo-aware set.</div>
+      </div>
+      <div style="width: 45.75%; text-align: center;">
+          <img src="./files/geo-aware-sensitivity.png" style="width: 100%;">
+          <div style="height: 7.5px;"></div> 
+          <div><strong>(d)</strong> Sensitivity to pose variation (higher value = more sentivity).</div>
+      </div>
+    </div>
+
+  <br>
+    <a>
+      <strong>In Fig. (c)</strong>, we show the per-category evaluation of state-of-the-art methods
+      on SPair-71k geometry-aware subset (Geo.) and standard set. While the geometry-aware subset accounts for 60% of the total
+      matching keypoints, we observe a substantial performance gap between the two sets for all the methods.
+      <strong>In Fig. (d)</strong>, we further evaluate how the performance on geometry-aware subset is sentitive to pose variation of the pair images. 
+      The y-axis displays the normalized difference between the best and worst performances among 5 different azimuth-variation subsets.
+      As it can be observed, the geometry-aware subset is more sensitive to the pose variation than the standard set across categories and methods, 
+      indicating that the pose variation particularly affects the performance on geometry-aware semantic correspondence.
+    </a>
+  <br>
+  <br>
+
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <div style="width: 40%; text-align: center; margin-right: 2.5%;">
+        <img src="./files/geo-aware-pose-prediction.png" style="width: 100%;">
+      <div style="height: 7.5px;"></div> 
+        <div><strong>(e)</strong> Rough pose prediction with feature distance.</div>
+    </div>
+    <div style="width: 35%; text-align: center;">
+      <div style="height: 17.5px;"></div> 
+        <img src="./files/geo-aware-pose-prediction-performance.png" style="width: 100%;">
+        <div style="height: 7.5px;"></div> 
+        <div><strong>(f) Zero-shot rough pose prediction result with instance matching distance (IDM).</strong>
+          We manually annotated 100 cat images from SPair-71k with rough pose labels {left, right, front, and back} 
+          and report the accuracy of predicting left or right (L/R),
+          front or back (F/B), the first two cases (L/R or F/B), and one of
+          the four directions (L/R/F/B). </div>
+    </div>
+  </div>
+
+  <br>
+    <a>
+    We further analyze if deep features are aware of high-level pose (or viewpoint) information of an instance in an image.
+    <strong>In Fig. (e)</strong>, we show how we explore this pose awareness by a template-matching approach in the feature space. 
+    The performance shown <strong>in Fig. (f)</strong> suggests that the deep features are indeed aware of the global pose information.
+    Please refer to the paper for more details.
+    </a>
+  <br>
+  <br>
+
+  </div>
+
+
+  <div class="content">
+    <h2>Improving Geometry-Aware Semantic Correspondence</h2>
+    <p> We propose several techniques that improve geometric
+      awareness during matching, in both zero-shot and supervised settings.
+    </p>
+    <div style="display: flex; justify-content: center;">
+      <div style="width: 46.5%; text-align: center; margin-right: 2%;">
+          <img src="./files/adaptive-pose-alignment.png" style="width: 100%;">
+        <div style="height: 8.5px;"></div> 
+          <div><strong>(a)</strong> Adaptive pose alignment with feature space distance.</div>
+      </div>
+      <div style="width: 41.5%; text-align: center;">
+        <div style="height: 10px;"></div>
+          <img src="./files/adaptive-pose-alignment-performance.png" style="width: 100%;">
+          <div style="height: 7.5px;"></div> 
+          <div><strong>(b)</strong> Qualitative results of the adaptive alignment.</div>
+      </div>
+    </div>
+    
+  <br>
+    <a>
+      We first introduce an adaptive pose alignment strategy that runs at test time without any training involved.
+      This is based on the observation that pose variations can largely affect the performance of geometry-aware semantic correspondence.
+      As illustrated <strong>in Fig. (a)</strong>, we introduce a very simple test-time pose alignment strategy to address this, which utilizes the global pose information inherent in deep features and thus improving correspondence accuracy.
+      We show <strong>in Fig. (b)</strong> that this simple strategy can drastically improve the correspondence accuracy in a test-time, unsupervised manner.
+    </a>
+  <br>
+  <br>
+
+    <div style="display: flex; justify-content: center;">
+      <div style="width: 100%; text-align: center">
+          <img src="./files/supervised-framework.png" style="width: 100%;">
+        <div style="height: 7.5px;"></div> 
+          <div><strong>(c)</strong> (Left) previous supervised methods [1,3] with a sparse training objective. (Right) an overview of our supervised method.</div>
+      </div>
+    </div>
+
+  <br>
+    <a>
+     We further introduce a post-processing module with various training strategies that can improve the geometry awareness of deep features.
+     It's worth noting that this extra module only costs 0.32% extra runtime while significantly improves the performance on standard benchmarks by 15%.
+    </a>
+  <br>
+  <br>
+  </div>
+
+  <div class="content">
+    <h2>Benchmarking AP-10K Dataset for Semantic Correspondence</h2>
+    <p> To facilitate validating and training, we construct a new, large-scale, and chanllenging semantic correspondence benchmark built from an existing animal pose estimation dataset, AP-10K. </p>
+      <div style="display: flex; justify-content: center;">
+        <div style="width: 100%; text-align: center;">
+            <img src="./files/ap10k_samples.png" style="width: 100%;">
+          <div style="height: 7.5px;"></div> 
+            <div><strong>(a)</strong> Sample image pairs from AP-10K semantic correspondence benchmark.</div>
+        </div>
+      </div>
+      
+    <br>
+      <a>
+        AP-10K is a in-the-wild animal pose estimation dataset consisting of 10,015 images across 23 families 369 and 54 species.
+        After manually filtering and processing, we construct a benchmark with 261k training, 17k validation, and 36k testing image pairs. 
+        The validation and testing image pairs span three settings: the main intra-species set, the cross-species set, and the cross-familyset. 
+        It is 5 times larger than the largest existing benchmark, SPair-71k, and the first benchmark to evaluate cross-class semantic correspondence.
+        Please refer to Supp. for more details.
+      </a>
+    <br>
+
+  </div>
+
+  <div class="content">
+    <h2>Experimental Results</h2>
+    <p> We show the quantitative and qualitative results of our method on SPair-71k, AP-10K, and PF-Pascal datasets. </p>
+      <div style="display: flex; justify-content: center;">
+        <div style="width: 100%; text-align: center;">
+            <img src="./files/Results_quantitative.png" style="width: 100%;">
+          <div style="height: 7.5px;"></div> 
+            <div><strong>(a)</strong> Quantitative comparison across different datasets and PCK levels.</div>
+        </div>
+      </div>
+      
+    <br>
+      <a>
+        Both our zero-shot and supervised methods outperform all previous methods significantly.
+        Particularly, our supervised methods achive notable gains in the more strict thresholds (e.g., PCK@0.05 and PCK@0.01), especially considering that SD+DINO uses the same raw feature maps as our method.
+        Despite the methods being trained only on AP-10K intra-species sets, the robust performance on cross-species and cross-family test sets showcases the generalizability of our approach.
+        It's also noteworthy that pretraining on AP-10K brings a gain of 2.7p in PCK@0.10 on SPair-71k, underscoring the untapped potential of the pose datasets in this domain.
+      </a>
+    <br>
+    <br>
+  
+    <div style="display: flex; justify-content: center;">
+      <div style="width: 100%; text-align: center;">
+          <img src="./files/Results_similarity_map.png" style="width: 100%;">
+        <div style="height: 7.5px;"></div> 
+          <div><strong>(b) Visualization of similarity map.</strong> The query and predicted points are red, and the keypoint supervision of the “chair” category is blue.</div>
+      </div>
+    </div>
+  
+    <br>
+      <a>
+        We further investigate cases where the query point lacks meaning and without direct supervision. 
+        SD+DINO highlights the regions with similar appearance (wooden materials) but fails to locate the chair; 
+        SD+DINO (S) generates noisy similarity maps when the query point is out of supervision, due to the sparse training objective; 
+        Our method locates the points correctly, both semantically and geometrically.
+        Notably, all methods utilize the same raw feature maps, and our approach employs the same feature post-processor as SD+DINO (S). 
+        Despite this, the notable improvements in our method further underscore the efficacy of our design.
+      </a>
+    <br>
+    <br>
+  </div>
+
+  <div class="content">
+    <h2>Qualitative Comparison on SPair-71k</h2>
+    <h3>From left to right: SD+DINO, SD+DINO (S), and Ours. Our method particularly shines at large viewpoint variations.</h3>
+    <img class="summary-img" src="./files/supp_spair_qual1.png" style="width:100%;">
+    <br>
+    <img class="summary-img" src="./files/supp_spair_qual2.png" style="width:100%;">
+  </div>
+
+  <div class="content">
+    <h2>Qualitative Comparison on AP-10K</h2>
+    <h3>We show the comparison on the intra-species subset below:</h3>
+    <img class="summary-img" src="./files/8qual_results_intra_species.png" style="width:100%;">
+    <h3>We show the comparison on the cross-species subset below:</h3>
+    <img class="summary-img" src="./files/8qual_results_cross_species.png" style="width:100%;">
+    <h3>We show the comparison on the cross-family subset below:</h3>
+    <img class="summary-img" src="./files/8qual_results_cross_families.png" style="width:100%;">
+  </div>
+  
+
+<div class="content">
+  <h2>Related Work</h2>
+  <p style="margin-top:5px; margin-bottom:5px;">[1] <a href="https://sd-complements-dino.github.io/">A Tale of Two Features: Stable Diffusion Complements DINO for Zero-Shot Semantic Correspondence</a></p>
+  <p style="margin-top:5px; margin-bottom:5px;">[2] <a href="https://diffusionfeatures.github.io/">Emergent Correspondence from Image Diffusion</a></p>
+  <p style="margin-top:5px; margin-bottom:5px;">[3] <a href="https://diffusion-hyperfeatures.github.io/">Diffusion Hyperfeatures: Searching Through Time and Space for Semantic Correspondence</a></p>
+</div>
+
+  <div class="content">
+    <h2>BibTex</h2>
+    <code> @article{zhang2023telling,<br>
+  &nbsp;&nbsp;title={Telling Left from Right: Identifying Geometry-Aware Semantic Correspondence},<br>
+  &nbsp;&nbsp;author={Zhang, Junyi and Herrmann, Charles and Hur, Junhwa and Chen, Eric and Jampani, Varun and Sun, Deqing and Yang, Ming-Hsuan},<br>
+  &nbsp;&nbsp;booktitle={arXiv preprint},<br>
+  &nbsp;&nbsp;year={2023}<br>
+  } </code>
+  </div>
+  <div class="content" id="acknowledgements">
+    <p><strong>Acknowledgements</strong>:
+      We borrow this template from <a href="https://sd-complements-dino.github.io/">SD+DINO</a>, which is originally from <a href="https://dreambooth.github.io/">DreamBooth</a>.
+      <!-- Recycling a familiar <a href="https://chail.github.io/latent-composition/">template</a> ;). -->
+    </p>
+  </div>
+</body>
+
+</html>
