@@ -134,7 +134,7 @@
     <a>
       To construct a geometry-aware semantic correspondence subset, we first cluster keypoints into semantically-similar subgroups, e.g., the four paws and two ears of the cat, as shown in <strong>Fig. (a)</strong>.
       Then, we define a keypoint pair as a geometry-aware semantic correspondence if there are other keypoints in the same subgroup that are visible in the target image, e.g., the different paws of the cat, as shown in <strong>Fig. (b)</strong>.
-      These cases are especially challenging for existing methods, as they require proper understanding of the geometry to establish correct matches rather than matching to the semantically-similar keypoint(s).
+      These cases are especially challenging for existing methods, as they require a proper understanding of the geometry to establish correct matches rather than matching to the semantically-similar keypoint(s).
     </a>
   <br>
   <br>
@@ -219,7 +219,7 @@
     <a>
       We first introduce an adaptive pose alignment strategy that runs at test time without any training involved.
       This is based on the observation that pose variations can largely affect the performance of geometry-aware semantic correspondence.
-      As illustrated <strong>in Fig. (a)</strong>, we introduce a very simple test-time pose alignment strategy to address this, which utilizes the global pose information inherent in deep features and thus improving correspondence accuracy.
+      As illustrated <strong>in Fig. (a)</strong>, we introduce a very simple test-time pose alignment strategy to address this, which utilizes the global pose information inherent in deep features and thus improves correspondence accuracy.
       We show <strong>in Fig. (b)</strong> that this simple strategy can drastically improve the correspondence accuracy in a test-time, unsupervised manner.
     </a>
   <br>
@@ -299,7 +299,7 @@
         We further investigate cases where the query point lacks direct supervision and meaningful context. 
         SD+DINO highlights the regions with similar appearance (wooden materials) but fails to locate the chair; 
         SD+DINO (S) generates noisy similarity maps when the query point is out of supervision, due to the sparse training objective; 
-        Our method locates the points correctly, both semantically and geometrically, even when the query point lacks direct supervision and meaningful context.
+        our method locates the points correctly, both semantically and geometrically, even when the query point lacks direct supervision and meaningful context.
         Notably, all methods utilize the same raw feature maps, and our approach employs the same feature post-processor as SD+DINO (S). 
         Despite this, the notable improvements in our method further underscore the efficacy of our design.
       </a>
