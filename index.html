@@ -86,7 +86,7 @@
     <h3 style="text-align:center"><center>Semantic correspondence with fused Stable Diffusion and DINO features.</center></h3>
     </font> -->
     <a style="text-align:center">
-      <strong>In Fig. (a)</strong>, we demonstrate that the state-of-the-art method, SD+DINO, fails at matching keypoints with geometric ambiguity, or, “telling left from right”. 
+      <strong>In Fig. (a)</strong>, we demonstrate that the state-of-the-art method, SD+DINO, fails at matching keypoints with geometric ambiguity, or “telling left from right”. 
       <strong>In Fig. (b)</strong>, we show the performance gap between our proposed geometry-aware subset (Geo.) and the standard set (Std.) of state-of-the-art methods. 
       Note that the geo-aware subset accounts for 59.6% and 45.7% of the total keypoint pairs on SPair-71k and AP-10K, respectively. 
       Our method significantly improves overall semantic correspondence as well as narrows the gap between the two sets. 
@@ -132,8 +132,8 @@
     
   <br>
     <a>
-      To construct a geometry-aware semantic correspondence subset, we first cluster keypoints into semantically-similar subgroups, eg., the four paws and two ears of the cat, as shown in <strong>Fig. (a)</strong>.
-      Then, we define a keypoint pair as a geometry-aware semantic correspondence if there are other keypoints in the same subgroup that are visible in the target image, eg., the different paws of the cat, as shown in <strong>Fig. (b)</strong>.
+      To construct a geometry-aware semantic correspondence subset, we first cluster keypoints into semantically-similar subgroups, e.g., the four paws and two ears of the cat, as shown in <strong>Fig. (a)</strong>.
+      Then, we define a keypoint pair as a geometry-aware semantic correspondence if there are other keypoints in the same subgroup that are visible in the target image, e.g., the different paws of the cat, as shown in <strong>Fig. (b)</strong>.
       These cases are especially challenging for existing methods, as they require proper understanding of the geometry to establish correct matches rather than matching to the semantically-similar keypoint(s).
     </a>
   <br>
@@ -148,7 +148,7 @@
       <div style="width: 45.75%; text-align: center;">
           <img src="./files/geo-aware-sensitivity.png" style="width: 100%;">
           <div style="height: 7.5px;"></div> 
-          <div><strong>(d)</strong> Sensitivity to pose variation (higher value = more sentivity).</div>
+          <div><strong>(d)</strong> Sensitivity to pose variation (higher value = more sensitivity).</div>
       </div>
     </div>
 
@@ -157,7 +157,7 @@
       <strong>In Fig. (c)</strong>, we show the per-category evaluation of state-of-the-art methods
       on SPair-71k geometry-aware subset (Geo.) and standard set. While the geometry-aware subset accounts for 60% of the total
       matching keypoints, we observe a substantial performance gap between the two sets for all the methods.
-      <strong>In Fig. (d)</strong>, we further evaluate how the performance on geometry-aware subset is sentitive to pose variation of the pair images. 
+      <strong>In Fig. (d)</strong>, we further evaluate how the performance on geometry-aware subset is sensitive to pose variation of the pair images. 
       The y-axis displays the normalized difference between the best and worst performances among 5 different azimuth-variation subsets.
       As it can be observed, the geometry-aware subset is more sensitive to the pose variation than the standard set across categories and methods, 
       indicating that the pose variation particularly affects the performance on geometry-aware semantic correspondence.
@@ -178,7 +178,7 @@
         <div><strong>(f) Zero-shot rough pose prediction result with instance matching distance (IDM).</strong>
           We manually annotated 100 cat images from SPair-71k with rough pose labels {left, right, front, and back} 
           and report the accuracy of predicting left or right (L/R),
-          front or back (F/B), the first two cases (L/R or F/B), and one of
+          front or back (F/B), either of the two cases (L/R or F/B), and one of
           the four directions (L/R/F/B). </div>
     </div>
   </div>
@@ -236,7 +236,7 @@
   <br>
     <a>
      We further introduce a post-processing module with various training strategies that can improve the geometry awareness of deep features.
-     It's worth noting that this extra module only costs 0.32% extra runtime while significantly improves the performance on standard benchmarks by 15%.
+     It's worth noting that this extra module only costs 0.32% extra runtime while significantly improving the performance on standard benchmarks by 15%.
     </a>
   <br>
   <br>
@@ -244,7 +244,7 @@
 
   <div class="content">
     <h2>Benchmarking AP-10K Dataset for Semantic Correspondence</h2>
-    <p> To facilitate validating and training, we construct a new, large-scale, and chanllenging semantic correspondence benchmark built from an existing animal pose estimation dataset, AP-10K. </p>
+    <p> To facilitate validating and training, we construct a new, large-scale, and challenging semantic correspondence benchmark built from an existing animal pose estimation dataset, AP-10K. </p>
       <div style="display: flex; justify-content: center;">
         <div style="width: 100%; text-align: center;">
             <img src="./files/ap10k_samples.png" style="width: 100%;">
@@ -255,9 +255,9 @@
       
     <br>
       <a>
-        AP-10K is a in-the-wild animal pose estimation dataset consisting of 10,015 images across 23 families 369 and 54 species.
+        AP-10K is an in-the-wild animal pose estimation dataset consisting of 10,015 images across 23 families and 54 species.
         After manually filtering and processing, we construct a benchmark with 261k training, 17k validation, and 36k testing image pairs. 
-        The validation and testing image pairs span three settings: the main intra-species set, the cross-species set, and the cross-familyset. 
+        The validation and testing image pairs span three settings: the main intra-species set, the cross-species set, and the cross-family set. 
         It is 5 times larger than the largest existing benchmark, SPair-71k, and the first benchmark to evaluate cross-class semantic correspondence.
         Please refer to Supp. for more details.
       </a>
@@ -279,7 +279,7 @@
     <br>
       <a>
         Both our zero-shot and supervised methods outperform all previous methods significantly.
-        Particularly, our supervised methods achive notable gains in the more strict thresholds (e.g., PCK@0.05 and PCK@0.01), especially considering that SD+DINO uses the same raw feature maps as our method.
+        Particularly, our supervised methods achieve notable gains in the more strict thresholds (e.g., PCK@0.05 and PCK@0.01), especially considering that SD+DINO uses the same raw feature maps as our method.
         Despite the methods being trained only on AP-10K intra-species sets, the robust performance on cross-species and cross-family test sets showcases the generalizability of our approach.
         It's also noteworthy that pretraining on AP-10K brings a gain of 2.7p in PCK@0.10 on SPair-71k, underscoring the untapped potential of the pose datasets in this domain.
       </a>
@@ -296,10 +296,10 @@
   
     <br>
       <a>
-        We further investigate cases where the query point lacks meaning and without direct supervision. 
+        We further investigate cases where the query point lacks direct supervision and meaningful context. 
         SD+DINO highlights the regions with similar appearance (wooden materials) but fails to locate the chair; 
         SD+DINO (S) generates noisy similarity maps when the query point is out of supervision, due to the sparse training objective; 
-        Our method locates the points correctly, both semantically and geometrically.
+        Our method locates the points correctly, both semantically and geometrically, even when the query point lacks direct supervision and meaningful context.
         Notably, all methods utilize the same raw feature maps, and our approach employs the same feature post-processor as SD+DINO (S). 
         Despite this, the notable improvements in our method further underscore the efficacy of our design.
       </a>
