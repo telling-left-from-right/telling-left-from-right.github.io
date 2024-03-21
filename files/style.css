@@ -125,6 +125,7 @@ a, a:visited {
   font-size: 28px;
   font-weight: 300;
   color: black; /* 修改链接字体颜色为黑色 */
+  margin-bottom: -20px; /* 调整会议名称与作者之间的间距 */
 }
 #authors a {
   margin: 0 10px;
