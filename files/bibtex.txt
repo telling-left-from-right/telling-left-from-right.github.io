@@ -1,6 +1,8 @@
-@inproceedings{zhang2023telling,
-  title={Telling Left from Right: Identifying Geometry-Aware Semantic Correspondence},
-  author={Zhang, Junyi and Herrmann, Charles and Hur, Junhwa and Chen, Eric and Jampani, Varun and Sun, Deqing and Yang, Ming-Hsuan},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2024}
+@InProceedings{Zhang_2024_CVPR,
+  author    = {Zhang, Junyi and Herrmann, Charles and Hur, Junhwa and Chen, Eric and Jampani, Varun and Sun, Deqing and Yang, Ming-Hsuan},
+  title     = {Telling Left from Right: Identifying Geometry-Aware Semantic Correspondence},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month     = {June},
+  year      = {2024},
+  pages     = {3076-3085}
 }
